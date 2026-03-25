@@ -95,9 +95,9 @@ Example output when issues are found and fixed:
 
 ---
 
-## Root cause this addresses
+## Why this script was writte
 
-The specific failure sequence this script recovers from:
+The specific failure sequence this script helped recover from:
 
 ```
 logrotate runs at 00:00
@@ -106,11 +106,9 @@ logrotate runs at 00:00
   → pipe buffer (64KB) fills slowly over hours
   → next worker write() blocks → pipe_w
   → all 6 workers eventually stuck in pipe_w
-  → SIP connections accepted but no login: prompt ever sent
+  → SIP connections accepted but no login: prompt never sent
   → ACS/RFID terminals time out silently
 ```
-
-The zombie SIPServer master (in the case documented) had been present since January without causing an outage, because real ACS traffic uses the RAW transport over stunnel (port 6001 → 6010), not the telnet transport (port 8032). The pipe blockage is what caused the operational failure.
 
 ---
 
