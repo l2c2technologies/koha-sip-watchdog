@@ -95,7 +95,7 @@ Example output when issues are found and fixed:
 
 ---
 
-## Why this script was writte
+## Why this script was written
 
 The specific failure sequence this script helped recover from:
 
