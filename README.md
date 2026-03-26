@@ -120,7 +120,7 @@ To prevent recurrence, add a SIP restart to the logrotate `postrotate` block in 
 postrotate
     /etc/init.d/apache2 reload > /dev/null
     for instance in $(koha-list); do
-        koha-sip --restart $instance > /dev/null 2>&1 || true
+        [ -f "/var/lib/koha/${instance}/sip.enabled" ] && koha-sip --restart $instance > /dev/null 2>&1 || true
     done
 endscript
 ```
